@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content= "initial-scale=1, user-scalable=no">
+	<title>Upload</title>
+</head>
+<body>
+	<form>
+		<label>Upload
+		<input id="camera" type="file" accept="image/*;capture=camera"></label>
+	</form>
+	<script>
+		document.getElementById("camera").addEventListener("change", () => {
+			let reader = new FileReader();
+			reader.onload = (e) => {
+				let image = document.createElement("img");
+				document.body.appendChild(image);
+				image.src = reader.result;
+			}
+			let file = document.getElementById("camera").files[0];
+			reader.readAsDataURL(file);
+		})
+	</script>
+</body>
+</html>
