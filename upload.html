@@ -6,9 +6,10 @@
 	<title>Upload</title>
 </head>
 <body>
-	<form>
+	<form method="POST" action="/reco/men" enctype="multipart/form-data">
 		<label>Upload
 		<input id="camera" type="file" accept="image/*;capture=camera"></label>
+		<input type="submit" value="送信">
 	</form>
 	<script>
 		document.getElementById("camera").addEventListener("change", () => {
