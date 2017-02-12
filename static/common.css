@@ -52,3 +52,18 @@ a.button {
 a.button:hover {
 	background-color: rgba(0, 0, 0, 0);
 }
+
+#sample-images {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+}
+
+#sample-images li {
+	height: 300px;
+}
+
+#sample-images li img {
+	height: 300px;
+	width: auto;
+}
