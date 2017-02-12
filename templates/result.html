@@ -5,6 +5,24 @@
 	<meta name="viewport" content= "initial-scale=1, user-scalable=no">
 	<title>分析結果 - フクレコ</title>
 	<link rel="stylesheet" href="/static/common.css">
+	<script>
+	var count = 0;
+	function loadSample() {
+		let ul = document.getElementById('sample-images');
+		if (count < ul.children.length) {
+			for (let i=0;i<5;i++) {
+				let img = document.createElement('img');
+				img.src = "/static/imgdb/" + ul.children[count].dataset.path;
+				ul.children[count].appendChild(img);
+				count++;
+				if (count >= ul.children.length) break;
+			}
+		}
+	}
+	window.onload = function() {
+		loadSample();
+	}
+	</script>
 </head>
 <body>
 	<header>
@@ -12,20 +30,22 @@
 	</header>
 	<div>
 		<section id="analytics-result">
-			髪色：<p style="color:{{ res.hair_color }};">■</p>
-			肌色：<p style="color:{{ res.skin_color }};">■</p>
-			肩幅比率：<p>{{ res.ratio }}</p>
-			顔形：<p>{% if res.contour == 0 %}逆三角{% else %}{% if res.contour == 1 %}四角{% else %}丸{% endif %}{% endif %}顔</p>
+			<h1>自撮り分析結果</h1>
+			髪色：<span style="color:{{ res.hair_color }};">■</span><br>
+			肌色：<span style="color:{{ res.skin_color }};">■</span><br>
+			肩幅比率：<span>{{ res.ratio }}</span><br>
+			顔形：<span>{% if res.contour == 0 %}逆三角{% else %}{% if res.contour == 1 %}四角{% else %}丸{% endif %}{% endif %}顔</span>
 		</section>
 		<section id="clothes-samples">
 			<h1>あなたに近い体型のモデル</h1>
-			<ul>{% for image in res.sample_images %}
+			<ul id="sample-images">{% for image in res.sample_images %}
 				<li data-path="{{ image }}"></li>
 			{% endfor %}</ul>
+			<a class="button" href="javascript:void(0)" onclick="loadSample();">さらに読み込む</a>
 		</section>
 	</div>
 	<div>
-		<a href="index.html">もう一度</a>
+		<a href="/">もう一度</a>
 	</div>
 	<footer>
 		(c) 2017 Team.FukuReco
