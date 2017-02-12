@@ -12,14 +12,14 @@
 	</header>
 	<div>
 		<section id="analytics-result">
-			髪色：<p style="color:{{ hair_color }};">■</p>
-			肌色：<p style="color:{{ skin_color }};">■</p>
-			肩幅比率：<p>{{ ratio }}</p>
-			顔形：<p>{% if contour == 0 %}逆三角{% else %}{% if contour == 1 %}四角{% else %}丸{% endif %}{% endif %}顔</p>
+			髪色：<p style="color:{{ res.hair_color }};">■</p>
+			肌色：<p style="color:{{ res.skin_color }};">■</p>
+			肩幅比率：<p>{{ res.ratio }}</p>
+			顔形：<p>{% if res.contour == 0 %}逆三角{% else %}{% if res.contour == 1 %}四角{% else %}丸{% endif %}{% endif %}顔</p>
 		</section>
 		<section id="clothes-samples">
 			<h1>あなたに近い体型のモデル</h1>
-			<ul>{% for image in sample_images %}
+			<ul>{% for image in res.sample_images %}
 				<li data-path="{{ image }}"></li>
 			{% endfor %}</ul>
 		</section>
