@@ -3,19 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content= "initial-scale=1, user-scalable=no">
-	<title>解析結果 - フクレコ</title>
+	<title>分析結果 - フクレコ</title>
 	<link rel="stylesheet" href="common.css">
 </head>
 <body>
 	<header>
-		あなたに似合うファッション解析結果
+		あなたに似合う服装は・・・
 	</header>
 	<div>
-		<section id="colorset-wrap">
-			<h1>あなたに似合う色の組み合わせ</h1>
+		<section id="analytics-result">
+			髪色：<p style="color:{{ hair_color }};">■</p>
+			肌色：<p style="color:{{ skin_color }};">■</p>
+			肩幅比率：<p>{{ ratio }}</p>
+			顔形：<p>{% if contour == 0 %}逆三角{% else %}{% if contour == 1 %}四角{% else %}丸{% endif %}{% endif %}顔</p>
 		</section>
-		<section id="clothes-wrap">
-			<h1>あなたに似合う服の組み合わせ</h1>
+		<section id="clothes-samples">
+			<h1>あなたに近い体型のモデル</h1>
+			<ul>{% for image in sample_images %}
+				<li data-path="{{ image }}"></li>
+			{% endfor %}</ul>
 		</section>
 	</div>
 	<div>
