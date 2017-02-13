@@ -7,17 +7,24 @@
 	<link rel="stylesheet" href="/static/common.css">
 </head>
 <body>
+	<section>
+	<h1>画像のアップロード</h1>
 	<form method="POST" action="/reco/men" enctype="multipart/form-data">
 		<label>自撮りを撮影してね
 		<input id="camera" name="camera" type="file" accept="image/*;capture=camera"></label>
-		<input type="submit" value="解析開始!">
+		<input type="submit" value="分析スタート">
 	</form>
+	</section>
+	<section id="img-container">
+	</section>
 	<script>
 		document.getElementById("camera").addEventListener("change", () => {
+			let cntr = document.getElementById("img-container");
+			cntr.innerHTML = "";
 			let reader = new FileReader();
 			reader.onload = (e) => {
 				let image = document.createElement("img");
-				document.body.appendChild(image);
+				cntr.appendChild(image);
 				image.src = reader.result;
 			}
 			let file = document.getElementById("camera").files[0];

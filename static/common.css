@@ -47,10 +47,15 @@ a.button {
 	background-color: #FFEB3B;
 	border: 1px solid #FFEB3B;
 	border-radius: 8px;
+	transition: all .3s;
 }
 
 a.button:hover {
 	background-color: rgba(0, 0, 0, 0);
+}
+
+#img-container img {
+	width: 100%;
 }
 
 #sample-images {
